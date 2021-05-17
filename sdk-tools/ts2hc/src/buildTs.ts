@@ -118,9 +118,12 @@ export async function buildTs({
     const bundleResult = bundle(bundleInfo, logMgr);
 
     fs.writeFileSync(`${tempDir}/${config.modName}`, bundleResult.bundle);
-    const symbolsString = JSON.stringify(bundleResult.debugSymbols);
-    fs.writeFileSync(`${tempDir}/${config.modName}.symbols`, symbolsString);
-    fs.writeFileSync(outFileSymbols, symbolsString);
+
+    if (config.profile == "debug") {
+        const symbolsString = JSON.stringify(bundleResult.debugSymbols);
+        fs.writeFileSync(`${tempDir}/${config.modName}.symbols`, symbolsString);
+        fs.writeFileSync(outFileSymbols, symbolsString);
+    }
 
     compileByteCodeAndWriteHash(outFile, outFileHash, tempFile, config);
 

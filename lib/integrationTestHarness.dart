@@ -21,9 +21,13 @@ Widget integrationTestHarness(
     baseUrl: path,
     customNamespaces: customNamespaces,
     downloadHash: (String uri) async {
+      try {
       var file = File("$path.hc.sha256");
       var res = file.readAsStringSync();
       return res;
+      } catch (err) {
+        return null;
+      }
     },
     downloadByteCodeImage: (String uri) async {
       var file = File("$path.hc");
@@ -31,13 +35,17 @@ Widget integrationTestHarness(
       return res;
     },
     downloadDebugInfo: (String uri) async {
-      var file = File("$path.hc.symbols");
-      var res = file.readAsStringSync();
-      return json
-          .decode(res)
-          ?.map((x) => ModuleDebugInfo.fromJson(x))
-          ?.toList()
-          ?.cast<ModuleDebugInfo>();
+      try {
+        var file = File("$path.hc.symbols");
+        var res = file.readAsStringSync();
+        return json
+            .decode(res)
+            ?.map((x) => ModuleDebugInfo.fromJson(x))
+            ?.toList()
+            ?.cast<ModuleDebugInfo>();
+      } catch (err) {
+        return [];
+      }
     },
   );
 }

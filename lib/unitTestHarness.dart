@@ -17,11 +17,14 @@ Future<CoroutineResult> unitTestHarness({
   var state = HydroState();
   loadBuiltins(hydroState: state, builtins: libs);
 
-  List<ModuleDebugInfo> moduleDebugInfo = json
-      .decode(File("$path.symbols").readAsStringSync())
-      ?.map((x) => ModuleDebugInfo.fromJson(x))
-      ?.toList()
-      ?.cast<ModuleDebugInfo>();
+  List<ModuleDebugInfo> moduleDebugInfo;
+  try {
+    moduleDebugInfo = json
+        .decode(File("$path.symbols").readAsStringSync())
+        ?.map((x) => ModuleDebugInfo.fromJson(x))
+        ?.toList()
+        ?.cast<ModuleDebugInfo>();
+  } catch (err) {}
 
   state.symbols = moduleDebugInfo;
   var linkStatus = LinkStatus();
