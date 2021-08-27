@@ -64,7 +64,7 @@
     "typedoc": "0.21.6",
     "typedoc-neo-theme": "1.1.1",
     "typescript": "3.9.9",
-    "typescript-to-lua": "0.34.0"
+    "typescript-to-lua": "0.41.1"
   },
   "importSort": {
     ".js, .jsx, .ts, .tsx": {
