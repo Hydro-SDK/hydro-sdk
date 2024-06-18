@@ -48,7 +48,7 @@
     "escape-regex-string": "^1.0.6",
     "humanhash": "^1.0.4",
     "import-sort-style-module": "^6.0.0",
-    "jest": "^26.1.0",
+    "jest": "^28.0.0",
     "luacodegen": "^1.0.2",
     "luamin": "^1.0.4",
     "luaparse": "^0.3.0",
