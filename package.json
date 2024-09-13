@@ -40,7 +40,7 @@
     "axios": "^0.26.0",
     "browserify": "^17.0.0",
     "chalk": "^4.1.1",
-    "chokidar": "^3.4.3",
+    "chokidar": "^4.0.0",
     "clear": "^0.1.0",
     "cli-progress": "^3.8.2",
     "colors": "^1.4.0",
